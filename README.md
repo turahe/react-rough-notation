@@ -11,6 +11,7 @@ A modern React 19 wrapper for [RoughNotation](https://roughnotation.com/), a sma
 - [Visit website to see it in action](https://roughnotation.com/)
 - [Library docs](https://github.com/pshihn/rough-notation)
 - [Testing Guide](./TESTING.md)
+- [Changelog](./CHANGELOG.md)
 
 ![Rough Notation logo](https://roughnotation.com/images/social.png)
 
@@ -197,6 +198,20 @@ npm run test:ci
 **Current Coverage**: 89.36% overall with 28 passing tests
 
 See [TESTING.md](./TESTING.md) for detailed testing documentation.
+
+## 📋 Changelog
+
+We maintain a detailed changelog documenting all version changes, new features, and breaking changes.
+
+### Recent Updates
+
+- **v2.1.0**: Added comprehensive testing infrastructure and GitHub Actions CI/CD
+- **v2.0.0**: Major upgrade to React 19, TypeScript 5.9, and Rollup 4
+- **v1.0.0**: Initial release with basic Rough Notation functionality
+
+### Full History
+
+See [CHANGELOG.md](./CHANGELOG.md) for complete version history, migration guides, and detailed change logs.
 
 ## 🔧 Development
 
