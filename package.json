@@ -1,9 +1,6 @@
 {
   "name": "@turahe/react-rough-notation",
   "version": "2.1.0",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "main": "./dist/main.js",
   "module": "./dist/module.es.js",
   "types": "./dist/index.d.ts",
