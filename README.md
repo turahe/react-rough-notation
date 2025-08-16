@@ -1,54 +1,86 @@
-# Rough Notation React (Wrapper)
+# React Rough Notation
 
-![npm](https://img.shields.io/npm/v/react-rough-notation?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/@turahe/react-rough-notation?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19.1.1-blue?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue?style=for-the-badge)
+![Tests](https://img.shields.io/badge/Tests-28%20passed-brightgreen?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/Coverage-89.36%25-brightgreen?style=for-the-badge)
 
-This is a React wrapper for [RoughNotation](https://roughnotation.com/), a small JavaScript library to create and animate annotations on a web page.
+A modern React 19 wrapper for [RoughNotation](https://roughnotation.com/), a small JavaScript library to create and animate annotations on a web page.
 
 - [Visit website to see it in action](https://roughnotation.com/)
 - [Library docs](https://github.com/pshihn/rough-notation)
+- [Testing Guide](./TESTING.md)
 
 ![Rough Notation logo](https://roughnotation.com/images/social.png)
 
-## Table of contents
+## ✨ Features
 
-<!-- TOC -->
+- **React 19 Compatible** - Built with the latest React features
+- **TypeScript Support** - Full type safety and IntelliSense
+- **Modern Build System** - Rollup 4 with ES modules and CommonJS
+- **Comprehensive Testing** - 89.36% test coverage with Jest and React Testing Library
+- **Tree Shaking** - Optimized bundle sizes
+- **SSR Ready** - Works in server-side rendering environments
 
-- [Rough Notation React (Wrapper)](#rough-notation-react-wrapper)
-  - [Table of contents](#table-of-contents)
-  - [Installation](#installation)
-  - [RoughNotation Component](#roughnotation-component)
-    - [Usage](#usage)
-    - [Props](#props)
-    - [Type values](#type-values)
-    - [Updating Styles](#updating-styles)
-  - [RoughNotationGroup Component](#roughnotationgroup-component)
-    - [Usage](#usage)
-    - [Props](#props)
-    - [Custom order](#custom-order)
-  - [Playground](#playground)
-  - [TODO](#todo)
+## 📦 Installation
 
-<!-- /TOC -->
+You can add react-rough-notation to your project via npm.
 
-## Installation
-
-You can add rough-notation to your project via npm.
-
-```
-npm install --save react-rough-notation
+```bash
+npm install --save @turahe/react-rough-notation
 ```
 
-Then just import the components you need.
+Or using yarn:
+
+```bash
+yarn add @turahe/react-rough-notation
+```
+
+Then import the components you need:
 
 ```js
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import { RoughNotation, RoughNotationGroup } from "@turahe/react-rough-notation";
 ```
 
-## RoughNotation Component
+## 🚀 Quick Start
 
-This is the main component, is a span element by default but you can change the tag name by anything you want using the `customElement` prop.
+```jsx
+import React, { useState } from 'react';
+import { RoughNotation, RoughNotationGroup } from '@turahe/react-rough-notation';
 
-### Usage
+function App() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShow(!show)}>
+        {show ? 'Hide' : 'Show'} Annotations
+      </button>
+      
+      <RoughNotationGroup show={show}>
+        <RoughNotation type="underline" color="red">
+          Hello,
+        </RoughNotation>
+        <RoughNotation type="box" color="blue">
+          This is
+        </RoughNotation>
+        <RoughNotation type="circle" color="green">
+          a Test
+        </RoughNotation>
+      </RoughNotationGroup>
+    </div>
+  );
+}
+```
+
+## 🧩 Components
+
+### RoughNotation Component
+
+This is the main component, which renders as a span element by default but can be customized using the `customElement` prop.
+
+#### Basic Usage
 
 ```jsx
 <RoughNotation type="underline" show={state.show}>
@@ -56,9 +88,9 @@ This is the main component, is a span element by default but you can change the 
 </RoughNotation>
 ```
 
-### Props
+#### Props
 
-Any unlisted prop will be pass to the component so you can use any react prop to handle interactions or styling.
+Any unlisted prop will be passed to the component, so you can use any React prop to handle interactions or styling.
 
 | name                | type                                                             | default              | description                                                                                                                                                                                                                                                                                  |
 | ------------------- | ---------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -77,36 +109,36 @@ Any unlisted prop will be pass to the component so you can use any react prop to
 | strokeWidth         | `number`                                                         | `1`                  | Width of the annotation strokes                                                                                                                                                                                                                                                              |
 | type                | `enum` from (Type values)[#type-values]                          | `underline`          | It sets the annotation style                                                                                                                                                                                                                                                                 |
 
-### Type values
+#### Type Values
 
 | value          | description                                             |
 | -------------- | ------------------------------------------------------- |
 | underline      | Create a sketchy underline below an element             |
 | box            | This style draws a box around the element               |
 | circle         | Draw a circle around the element                        |
-| highlight      | Creates a highlight effect as if maked by a highlighter |
+| highlight      | Creates a highlight effect as if marked by a highlighter |
 | strike-through | Draws a horizontal line over the element                |
 | crossed-off    | Crosses out the element with two diagonal lines         |
 
-### Updating Styles
+#### Updating Styles
 
-Some props can be changed after the initialization without re-rendering the annotation. i.e: if you like to change the color, just change the `color` prop, here is the complete list:
+Some props can be changed after initialization without re-rendering the annotation. Here's the complete list:
 
 | Prop              |
 | ----------------- |
-| animated          |
+| animate           |
 | animationDuration |
 | color             |
 | padding           |
 | strokeWidth       |
 
-_Note: the type of the annotation cannot be changed. Create a new annotation for that._
+**Note**: The type of the annotation cannot be changed. Create a new annotation for that.
 
-## RoughNotationGroup Component
+### RoughNotationGroup Component
 
-This is a wrapper for multiple annotations, it will trigger the `show()` method on every child annotation after the prev annotation animation is complete. **It does not render any HTML element.**
+This is a wrapper for multiple annotations that triggers the `show()` method on every child annotation after the previous annotation animation is complete. **It does not render any HTML element.**
 
-### Usage
+#### Usage
 
 ```jsx
 <RoughNotationGroup show={state.show}>
@@ -116,17 +148,17 @@ This is a wrapper for multiple annotations, it will trigger the `show()` method 
 </RoughNotationGroup>
 ```
 
-### Props
+#### Props
 
 | name | type    | default | description                |
 | ---- | ------- | ------- | -------------------------- |
 | show | boolean |         | show/hides the annotations |
 
-### Custom order
+#### Custom Order
 
-If you need to trigger annotations in a specific order, use the `order` prop in each `RoughAnnotation` component.
+If you need to trigger annotations in a specific order, use the `order` prop in each `RoughNotation` component.
 
-i.e: Reverse order
+**Example**: Reverse order
 
 ```jsx
 <RoughNotationGroup show={state.show}>
@@ -142,13 +174,125 @@ i.e: Reverse order
 </RoughNotationGroup>
 ```
 
-_Note: It will annotate first the components with the `order` prop, and then the ones without it._
+**Note**: It will annotate first the components with the `order` prop, and then the ones without it.
 
-## Playground
+## 🧪 Testing
 
-You can find a [CodeSandbox demo here](https://codesandbox.io/s/github/linkstrifer/react-rough-notation-playground)
+This project includes comprehensive testing with Jest and React Testing Library:
 
-## TODO
+```bash
+# Run all tests
+npm test
 
-- [ ] Auto compile and publish to npm
-- [ ] Testing
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in CI mode
+npm run test:ci
+```
+
+**Current Coverage**: 89.36% overall with 28 passing tests
+
+See [TESTING.md](./TESTING.md) for detailed testing documentation.
+
+## 🔧 Development
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm 8+ or yarn
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/turahe/react-rough-notation.git
+cd react-rough-notation
+
+# Install dependencies
+npm install
+
+# Start development mode
+npm start
+
+# Build for production
+npm run build
+```
+
+### Scripts
+
+- `npm start` - Start development mode with watch
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage
+- `npm run test:ci` - Run tests in CI mode
+
+## 📚 Examples
+
+### Basic Annotations
+
+```jsx
+<RoughNotation type="underline" color="red" show={true}>
+  This text will be underlined in red
+</RoughNotation>
+
+<RoughNotation type="box" color="blue" strokeWidth={2} show={true}>
+  This text will be boxed in blue with thick strokes
+</RoughNotation>
+```
+
+### Animated Group
+
+```jsx
+<RoughNotationGroup show={showGroup}>
+  <RoughNotation type="highlight" color="yellow" order={1}>
+    First
+  </RoughNotation>
+  <RoughNotation type="underline" color="red" order={2}>
+    Second
+  </RoughNotation>
+  <RoughNotation type="circle" color="green" order={3}>
+    Third
+  </RoughNotation>
+</RoughNotationGroup>
+```
+
+### Custom Element
+
+```jsx
+<RoughNotation type="underline" customElement="h1" show={true}>
+  This will be a heading with an underline
+</RoughNotation>
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Guidelines
+
+1. Ensure all tests pass
+2. Maintain test coverage above 85%
+3. Follow TypeScript best practices
+4. Update documentation as needed
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [RoughNotation](https://roughnotation.com/) - The original library by Preet Shihn
+- [React](https://reactjs.org/) - The UI library that makes this possible
+- [TypeScript](https://www.typescriptlang.org/) - For type safety and developer experience
+
+## 🔗 Links
+
+- [NPM Package](https://www.npmjs.com/package/@turahe/react-rough-notation)
+- [GitHub Repository](https://github.com/turahe/react-rough-notation)
+- [Original RoughNotation](https://roughnotation.com/)
+- [React Documentation](https://reactjs.org/)

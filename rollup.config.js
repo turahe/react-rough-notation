@@ -1,17 +1,16 @@
-import resolve from '@rollup/plugin-node-resolve'
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import commonJS from '@rollup/plugin-commonjs'
-import typescript from 'rollup-plugin-typescript2'
+const resolve = require('@rollup/plugin-node-resolve')
+const peerDepsExternal = require('rollup-plugin-peer-deps-external')
+const commonJS = require('@rollup/plugin-commonjs')
+const typescript = require('@rollup/plugin-typescript')
 
-import pkg from './package.json'
+const pkg = require('./package.json')
 
-export default {
+module.exports = {
   external: ['rough-notation'],
   input: 'src/index.ts',
   strictDeprecations: true,
   output: [
     {
-      banner: `'use client';`,
       exports: 'named',
       file: pkg.main,
       format: 'cjs',
@@ -19,7 +18,6 @@ export default {
       strict: false,
     },
     {
-      banner: `'use client';`,
       file: pkg.module,
       format: 'esm',
       sourcemap: true,
@@ -32,7 +30,10 @@ export default {
       include: 'node_modules/**',
     }),
     typescript({
-      useTsconfigDeclarationDir: true,
+      declaration: true,
+      declarationDir: 'dist',
+      outDir: 'dist',
+      sourceMap: true,
     }),
   ],
 }

@@ -73,7 +73,7 @@ const RoughNotationGroup: React.FunctionComponent<RoughNotationGroupProps> = ({
   show,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const timeouts = useRef<NodeJS.Timeout[]>([])
+  const timeouts = useRef<ReturnType<typeof setTimeout>[]>([])
 
   useEffect(() => {
     let nextTimeout = 0

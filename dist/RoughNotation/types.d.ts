@@ -1,6 +1,6 @@
 import React from 'react';
-export declare type types = 'underline' | 'box' | 'circle' | 'highlight' | 'strike-through' | 'crossed-off' | 'bracket';
-declare type brackets = 'left' | 'right' | 'top' | 'bottom';
+export type types = 'underline' | 'box' | 'circle' | 'highlight' | 'strike-through' | 'crossed-off' | 'bracket';
+type brackets = 'left' | 'right' | 'top' | 'bottom';
 interface RoughNotationProperties {
     animate?: boolean;
     animationDelay?: number;

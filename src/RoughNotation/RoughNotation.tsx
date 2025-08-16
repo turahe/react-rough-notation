@@ -1,4 +1,3 @@
-'use client'
 import React, { useRef, useEffect, useCallback } from 'react'
 
 import { annotate } from 'rough-notation'
@@ -26,7 +25,7 @@ const RoughNotation: React.FunctionComponent<RoughNotationProps> = ({
   ...rest
 }) => {
   const element = useRef<HTMLElement>(null)
-  const annotation = useRef<Annotation>()
+  const annotation = useRef<Annotation | null>(null)
   const innerVars = useRef<{
     playing: boolean
     timeout: null | number

@@ -4,10 +4,10 @@ export interface RoughNotationGroupProps {
     children: React.ReactNode;
     show?: boolean;
 }
-export declare type State = {
+export type State = {
     annotations: Array<Payload>;
 };
-export declare type Payload = {
+export type Payload = {
     annotation: {
         getAnnotation: () => Annotation;
         show: () => void;
@@ -15,8 +15,8 @@ export declare type Payload = {
     };
     order: number | undefined;
 };
-export declare type Action = {
+export type Action = {
     type: 'ADD';
     payload: Payload;
 };
-export declare type Dispatch = (action: Action) => void;
+export type Dispatch = (action: Action) => void;
